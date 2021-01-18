@@ -1,28 +1,24 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int gappx              = 0;        /* gap pixel between windows */
 static const char *fonts[]          = { "Fira Code Retina:size=11" };
 static const char dmenufont[]       = "Fira Code Retina:size=11";
-static const char col_gray1[]       = "#1d2021";
-static const char col_gray2[]       = "#504945";
-static const char col_gray3[]       = "#7c6f64";
-static const char col_gray4[]       = "#ebdbb2";
-//static const char col_cyan[]        = "#458588";
-static const char col_cyan[]        = "#3c3836";
-//static const char col_gray1[]       = "#222222";
-//static const char col_gray2[]       = "#444444";
-//static const char col_gray3[]       = "#bbbbbb";
-//static const char col_gray4[]       = "#eeeeee";
-//static const char col_cyan[]        = "#005577";
+static const char col_gray1[]       = "#1d2021"; /* bg-dark */
+static const char col_gray2[]       = "#504945"; /* border1 */
+static const char col_gray3[]       = "#7c6f64"; /* fg-dark */
+static const char col_gray4[]       = "#ebdbb2"; /* fg-light */
+static const char col_cyan[]        = "#3c3836"; /* bg-light */
+static const char col_blue[]        = "#458588"; /* border-app */
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_blue  },
 };
 
 /* tagging */
