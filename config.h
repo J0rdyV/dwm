@@ -6,8 +6,8 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int gappx              = 0;        /* gap pixel between windows */
-static const char *fonts[]          = { "Fira Code Retina:size=11" };
-static const char dmenufont[]       = "Fira Code Retina:size=11";
+static const char *fonts[]          = { "Cascadia Code:style=Regular:size=11:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Cascadia Code:style=Regular:size=11:antialias=true:autohint=true";
 static const char col_gray1[]       = "#1d2021"; /* bg-dark */
 static const char col_gray2[]       = "#504945"; /* border1 */
 static const char col_gray3[]       = "#7c6f64"; /* fg-dark */
