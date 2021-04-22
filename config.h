@@ -66,7 +66,7 @@ static const char *cooltermcmd[]  = { "cool-retro-term", NULL };
 static const char *slock[]  = { "slock", NULL };
 static const char *screenshot[]  = { "/usr/bin/screen", NULL };
 static const char *screenshotsave[]  = { "/usr/bin/screen-save", NULL };
-static const char *clipmenucmd[] = { "clipmenu", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *clipmenucmd[] = { "clipmenu", "-c", "-l", "15", "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
