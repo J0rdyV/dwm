@@ -8,7 +8,8 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const int gappx              = 0;        /* gap pixel between windows */
 static const char *fonts[]          = {
 	"Cascadia Code PL:style=Regular:size=11:antialias=true:autohint=true",
-	"Noto Emoji:size=11"
+	"Noto Emoji:size=11",
+	"monospace:size=10"
 };
 static const char col_gray1[]       = "#1d2021"; /* bg-dark */
 static const char col_gray2[]       = "#504945"; /* border1 */
@@ -62,22 +63,24 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-c", "-l", "15", "-m", dmenumon, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon };
 static const char *termcmd[]  = { "st", NULL };
 static const char *slock[]  = { "slock", NULL };
-static const char *screenshot[]  = { "/usr/bin/screen", NULL };
-static const char *dtime[]  = { "/usr/bin/dtime", NULL };
-static const char *screenshotsave[]  = { "/usr/bin/screen-save", NULL };
-static const char *clipmenucmd[] = { "clipmenu", "-c", "-l", "15", "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *emojimenucmd[]  = { "/usr/bin/emojimenu", NULL };
-static const char *colorpickercmd[]  = { "/usr/bin/colorpicker", NULL };
+static const char *screenshot[]  = { "screen", NULL };
+static const char *dtime[]  = { "dtime", NULL };
+static const char *screenshotsave[]  = { "screen-save", NULL };
+static const char *clipmenucmd[] = { "clipmenu" };
+static const char *emojimenucmd[]  = { "emojimenu", NULL };
+static const char *dpasscmd[]  = { "dpass", NULL };
+static const char *colorpickercmd[]  = { "colorpicker", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = emojimenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = dpasscmd } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = colorpickercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = clipmenucmd } },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = emojimenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = -1 } },
