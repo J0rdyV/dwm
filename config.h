@@ -13,9 +13,11 @@ static const char *fonts[]          = {
       "monospace:size=10"
 };
 
-static const char col_black[]       = "#000000";
+/* static const char col_black[]       = "#000000"; */
+static const char col_black[]       = "#32302f";
 /* static const char col_white[]       = "#d7d7d7"; */
-static const char col_white[]       = "#f1f1f1";
+/* static const char col_white[]       = "#f1f1f1"; */
+static const char col_white[]       = "#ebdbb2";
 static const char col_orange[]      = "#fabd2f";
 
 static const char *colors[][3]      = {
@@ -26,7 +28,8 @@ static const char *colors[][3]      = {
 
 /* tagging */
 /* static const char *tags[] = { "com", "rdp", "web", "dev", "sql" }; */
-static const char *tags[] = { "com", "test", "web", "dev", "term" };
+/* static const char *tags[] = { "com", "test", "web", "dev", "term" }; */
+static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -74,18 +77,19 @@ static const char *dtime[]  = { "dtime", NULL };
 static const char *screenshotsave[]  = { "screen-save", NULL };
 static const char *clipmenucmd[] = { "clipmenu" };
 static const char *emojimenucmd[]  = { "emojimenu", NULL };
-static const char *dpasscmd[]  = { "dpass", NULL };
 static const char *colorpickercmd[]  = { "colorpicker", NULL };
 static const char *alsamenu[]  = { "alsamenu", NULL };
-static const char *notifytoggle[]  = { "dunstctl", "set-paused", "toggle", NULL };
-static const char *finder[]  = { "st", "-t", "lf", "-c", "lf", "-e", "lf", NULL };
+static const char *notifytoggle[]  = { "notifytoggle", NULL };
+static const char *finder[]  = { "finder", NULL };
 static const char *qalculate[]  = { "qalculate-gtk", NULL };
 static const char *keymapmenucmd[]  = { "keymapmenu", NULL };
+static const char *notes[]  = { "notes", NULL };
+static const char *dmenurecord[]  = { "dmenurecord", NULL };
+static const char *dmenurecordkill[]  = { "dmenurecord", "kill", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = dpasscmd } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = colorpickercmd } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = clipmenucmd } },
 	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = emojimenucmd } },
@@ -127,10 +131,13 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          {.v = dtime } },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = slock } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = alsamenu } },
-	{ MODKEY,                       XK_n,      spawn,          {.v = notifytoggle } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = notes } },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notifytoggle } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = finder } },
 	{ MODKEY,                       XK_w,      spawn,          {.v = qalculate } },
-	{ MODKEY|ShiftMask,             XK_k,      spawn,          {.v = keymapmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = keymapmenucmd } },
+	{ MODKEY,                       XK_1,      spawn,          {.v = dmenurecord } },
+	{ MODKEY|ShiftMask,             XK_1,      spawn,          {.v = dmenurecordkill } },
 };
 
 /* button definitions */
