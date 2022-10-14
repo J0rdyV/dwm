@@ -3,11 +3,11 @@
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int showbar            = 1;        /* 0 means no bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-      /* "Cascadia Code:style=regular:size=10:antialias=true:autohint=true", */
-      "Terminus:style=Bold:size=12:antialias=true:autohint=true",
+      "Cascadia Code:style=regular:pixelsize=18:antialias=true:autohint=true",
+      /* "Terminus:size=14:antialias=true:autohint=true", */
       /* "Misc Tamsyn:style=Regular:pixelsize=15", */
       "Noto Emoji:size=10",
       "monospace:size=10"
@@ -28,8 +28,9 @@ static const char *colors[][3]      = {
 
 /* tagging */
 /* static const char *tags[] = { "com", "rdp", "web", "dev", "sql" }; */
-/* static const char *tags[] = { "com", "test", "web", "dev", "term" }; */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "com", "test", "web", "dev", "other" };
+/* static const char *tags[] = { "1", "2", "3", "4", "5" }; */
+/* static const char *tags[] = { "dev", "test", "other" }; */
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -38,7 +39,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",	NULL,	NULL,	0,	1,	-1 },
-	{ "qalculate-gtk",	NULL,	NULL,	0,	1,	-1 },
+	{ "Free42",	NULL,	NULL,	0,	1,	-1 },
 	{ "alsamixer",	NULL,	NULL,	0,	1,	-1 },
 	{ "lf",	NULL,	NULL,	0,	1,	-1 },
 };
@@ -51,12 +52,14 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[]=",      tile },    /* first entry is default */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
 /* key definitions */
+#include <X11/XF86keysym.h>
+
 #define MODKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -81,11 +84,19 @@ static const char *colorpickercmd[]  = { "colorpicker", NULL };
 static const char *alsamenu[]  = { "alsamenu", NULL };
 static const char *notifytoggle[]  = { "notifytoggle", NULL };
 static const char *finder[]  = { "finder", NULL };
-static const char *qalculate[]  = { "qalculate-gtk", NULL };
+static const char *free42[]  = { "plus42", NULL };
 static const char *keymapmenucmd[]  = { "keymapmenu", NULL };
 static const char *notes[]  = { "notes", NULL };
 static const char *dmenurecord[]  = { "dmenurecord", NULL };
 static const char *dmenurecordkill[]  = { "dmenurecord", "kill", NULL };
+static const char *pomodororun[]  = { "pomodoro_run", NULL };
+static const char *pomodorostop[]  = { "pomodoro_stop", "kill", NULL };
+static const char *backlightplus[]  = { "sudo", "backlight", "+", NULL };
+static const char *backlightmin[]  = { "sudo", "backlight", "-", NULL };
+static const char *upvol[] = { "amixer", "set", "Master", "5%+", NULL };
+static const char *downvol[] = { "amixer", "set", "Master", "5%-", NULL };
+static const char *mutevol[] = { "amixerl", "set", "Master", "toggle", NULL };
+static const char *fixscreen[] = { "fixscreen", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -134,10 +145,20 @@ static Key keys[] = {
 	{ MODKEY,                       XK_n,      spawn,          {.v = notes } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = notifytoggle } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = finder } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = qalculate } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = free42 } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = keymapmenucmd } },
 	{ MODKEY,                       XK_1,      spawn,          {.v = dmenurecord } },
 	{ MODKEY|ShiftMask,             XK_1,      spawn,          {.v = dmenurecordkill } },
+	{ MODKEY,                       XK_2,      spawn,          {.v = pomodororun } },
+	{ MODKEY|ShiftMask,             XK_2,      spawn,          {.v = pomodorostop } },
+
+	{ 0,				XF86XK_MonBrightnessUp,		spawn,	{.v = backlightplus} },
+	{ 0,				XF86XK_MonBrightnessDown,	spawn,	{.v = backlightmin} },
+	{ 0,				XF86XK_AudioLowerVolume,	spawn,	{.v = downvol } },
+	{ 0,				XF86XK_AudioMute,			spawn,	{.v = mutevol } },
+	{ 0,				XF86XK_AudioRaiseVolume,	spawn,	{.v = upvol   } },
+	{ 0,				XF86XK_Favorites,			spawn,	{.v = free42   } },
+	{ 0,				XF86XK_Display,				spawn,	{.v = fixscreen   } },
 };
 
 /* button definitions */
