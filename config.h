@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 0;        /* 0 means bottom bar */
+static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
       "Cascadia Code:style=regular:pixelsize=18:antialias=true:autohint=true",
       /* "Terminus:size=14:antialias=true:autohint=true", */
@@ -42,6 +42,7 @@ static const Rule rules[] = {
 	{ "Free42",	NULL,	NULL,	0,	1,	-1 },
 	{ "alsamixer",	NULL,	NULL,	0,	1,	-1 },
 	{ "lf",	NULL,	NULL,	0,	1,	-1 },
+	{ "stdc",	NULL,	NULL,	0,	1,	-1 },
 };
 
 /* layout(s) */
