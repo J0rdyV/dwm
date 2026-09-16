@@ -40,7 +40,7 @@ static const char col_orange[]     = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_white, col_black, col_black },
-	[SchemeSel]  = { col_black, col_white,  col_aqua  },
+	[SchemeSel]  = { col_black, col_white,  col_yellow  },
 };
 
 
@@ -102,6 +102,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon };
 static const char *sudodmenucmd[] = { "sudo_dmenu_run", "-m", dmenumon };
+static const char *dmenuflatpakcmd[] = { "dmenu_flatpak", NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *termfloatcmd[]  = { "st_float", NULL };
 static const char *slock[]  = { "slock", NULL };
@@ -132,7 +133,7 @@ static const char *downvol[] = { "amixer", "set", "Master", "5%-", NULL };
 static const char *mutevol[] = { "amixerl", "set", "Master", "toggle", NULL };
 static const char *fixscreen[] = { "fixscreen", NULL };
 static const char *passmenu[] = { "passmenu", NULL };
-static const char *maps[] = { "mepo", NULL };
+static const char *maps[] = { "OMaps", NULL };
 static const char *stncmpcpp[] = { "st", "-e", "ncmpcpp", NULL };
 static const char *stvimwiki[] = { "st", "-e", "vimwiki", NULL };
 static const char *wiki[] = { "vimwiki_preview", NULL };
@@ -210,6 +211,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_r,      spawn,          {.v = alsamenu } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = notes } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = images } },
+	{ MODKEY,                       XK_f,      spawn,          {.v = dmenuflatpakcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = finder } },
 	{ MODKEY,                       XK_c,      spawn,          {.v = free42 } },
 	{ MODKEY|ShiftMask,             XK_c,      spawn,          {.v = stcalc } },
@@ -221,7 +223,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_2,      spawn,          {.v = pomodororun } },
 	{ MODKEY|ShiftMask,             XK_2,      spawn,          {.v = pomodorostop } },
 	{ MODKEY,                       XK_3,      spawn,          {.v = passmenu } },
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = maps } },
+	{ MODKEY,                       XK_m,      spawn,          {.v = maps } },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          {.v = stncmpcpp } },
 	{ MODKEY,                       XK_z,      spawn,          {.v = zettel } },
 	{ MODKEY|ShiftMask,             XK_z,      spawn,          {.v = zeal } },
