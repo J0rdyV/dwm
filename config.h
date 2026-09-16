@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 20;       /* gaps between windows */
 static const unsigned int snap      = 10;       /* snap pixel */
-static const int showbar            = 0;        /* 0 means no bar */
+static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
 	//"Cascadia Code:style=regular:pixelsize=18:antialias=true:autohint=true",
@@ -40,7 +40,7 @@ static const char col_orange[]     = "#fe8019";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_white, col_black, col_black },
-	[SchemeSel]  = { col_black, col_white,  col_red  },
+	[SchemeSel]  = { col_black, col_white,  col_aqua  },
 };
 
 
@@ -72,9 +72,11 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "t",      tile },    /* first entry is default */
-	{ "f",      NULL },    /* no layout function means floating behavior */
-	{ "m",      monocle },
+	{ "()=",      tile },    /* first entry is default */
+	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "( )",      monocle },
+	{ "-O-",    centeredmaster },
+	{ ">O>",    centeredfloatingmaster },
 };
 
 /*
@@ -161,9 +163,11 @@ static Key keys[] = {
 	//{ MODKEY,                       XK_Tab,    view,           {0} },
 	//{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ControlMask,           XK_1,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY|ControlMask,           XK_2,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY|ControlMask,           XK_3,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY|ControlMask,           XK_4,      setlayout,      {.v = &layouts[3]} },
+	{ MODKEY|ControlMask,           XK_5,      setlayout,      {.v = &layouts[4]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
